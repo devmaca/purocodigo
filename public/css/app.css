@@ -1,0 +1,53 @@
+.right_space{
+		margin-right:1em;
+	}
+.remove-float{
+	float:none;
+}
+.top-space{
+	margin-top: 1.5em;
+}
+.big-top-space{
+	margin-top: 100px;
+}
+.large-padding{
+	paddin:10 px 15px 15px 20px;
+}
+.black{
+	background-color: #222; 
+}
+.while-text{
+	color:white;
+}
+
+nav{
+	text-align: right;
+}
+nav li{
+	display: inline-block;
+	margin-right: 1em;
+	font-size: 1.5em;
+}
+nav li a{
+	color:white;
+}
+nav li a:hover{
+	color:white;
+}
+.white{
+	background-color: white;
+}
+.border{
+	border:solid 1px #eee;
+}
+/*.tr:nth-of-type(odd){
+	background-color: #eee;
+}*/
+form.link{
+	display:inline-block;
+}
+form.link input[type="submit"]{
+	background-color: transparent;
+	border:none;
+	color:rgb(200,50,50);
+}

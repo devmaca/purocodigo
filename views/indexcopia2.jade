@@ -1,0 +1,21 @@
+html
+    head
+     title Mi primera pagina con express
+    body
+        //- h1 hola mundo con jade
+        // este un comentario, esta pagina esta indexado con app.js
+        h1 hola #{nombre}
+        h2!=variable2
+        -var arreglo=[1,2,3,4,5];
+        //- for (var i = arreglo.length - 1; i >= 0; i--) 
+        //-    p.
+        //-      hola haz click #[a(href="holamaca.com") aca] gracias contador #{arreglo[i]}
+        each item in arreglo
+            p= item
+            case item
+                when 1
+                    p el item era uno
+                when 2
+                    p el item era dos
+                default
+                    p el item noera uno, ni dos
