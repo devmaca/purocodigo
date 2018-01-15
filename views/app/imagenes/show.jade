@@ -1,3 +1,6 @@
 extends ../../layout.jade
 block contenido
-	h2=imagen.title
+	div(class="img-container")
+		h2=imagen.title
+		img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}",class="main-img")
+		p Por #{imagen.creator.email}

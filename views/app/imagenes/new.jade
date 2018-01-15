@@ -2,7 +2,7 @@ extends ../../layout.jade
 block contenido
 	div(class="col-md-6 remove-float center-block big-top-space")
 		h2 Subir nueva imagen
-		form(action="/app/imagenes", method="post")
+		form(action="/app/imagenes", method="post" enctype="multipart/form-data")
 			div(class="form-group")
 				label(for="title") Titulo
 				input(type="text", name="title",placeholder="Titulo de la imagen...",id="title",class="form-control")

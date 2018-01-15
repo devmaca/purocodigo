@@ -4,11 +4,14 @@ var User=require('./models/user').User;
 var session=require('express-session');
 var router_app=require("./routes_app");
 var session_middleware=require('./middlewares/sessions')
-
+var formidable=require('express-form-data');
 var methodOverride=require("method-override");
 
 var app=express();
-
+var http = require('http').createServer(app),
+    io = require('socket.io')(http),
+    port = process.env.PORT || 3000,
+    publicDir = `${__dirname}/public`
 
 //servir archivos estaticos
 app.use("/public",express.static('public'));
@@ -26,14 +29,39 @@ app.use(session({
 	saveUninitialized: false
 }));
 
+//app.use(formidable({encoding:'utf8', uploadDir:'./images', multiples:true}));
+app.use(formidable.parse({ keepExtensions:true}));
+
 app.set('view engine', 'jade')
+// 
+//inicio del codigo streaming
+
+http.listen(port,() => {
+	console.log('Iniciando express y socket.io en localhost:%d', port)
+})
+
+
+app.get('/receptor', function(req,res){
+	res.sendFile(`${publicDir}/client.html`);
+})
+app.get('/transmitir', function(req,res){
+	res.sendFile(`${publicDir}/server.html`);
+})
+
+io.on('connection', (socket) => {
+    socket.on('streaming',(image) =>{
+        io.emit('play stream', image)
+        //console.log(image)
+    })
+
+})
+//fin del codigo del streming
 
 app.get('/', function (req,res) {
-	console.log(req.session.user_id);
+	//console.log(req.session.user_id);
 	res.render('index');
-
 });
-
+//ruta para el registro del login
 app.get('/signup', function (req,res) {
 	console.log("los datos guardados son : ")
 	User.find(function(err,doc) {
@@ -87,5 +115,5 @@ app.use('/app',router_app);
 
 
 
-app.listen(3000,'localhost');
+//app.listen(3000,'localhost');
 console.log('servidor en linea...');

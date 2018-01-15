@@ -19,6 +19,23 @@
 .while-text{
 	color:white;
 }
+.img-container{
+	width: 700px;
+	max-width: 100%;
+	margin:0 auto;
+}
+.img-container h2{
+	padding: 15px;
+	border-bottom:1px solid #222;
+	}
+.img-container p{
+	text-align: right;
+	font-size: 1.2em;
+	margin-top: 1em;
+}
+img{
+	max-width: 100%
+}
 
 nav{
 	text-align: right;
@@ -51,3 +68,5 @@ form.link input[type="submit"]{
 	border:none;
 	color:rgb(200,50,50);
 }
+
+

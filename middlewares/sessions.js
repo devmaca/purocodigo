@@ -11,6 +11,7 @@ module.exports = function(req,res,next){
 				res.redirect("/login");
 			}
 			else{
+				console.log("usuario inicio sesion...");
 				console.log(user);
 				res.locals={user1: user};
 				next();
